@@ -1,9 +1,9 @@
 from django.shortcuts import render
-
-# Create your views here.
-
+from .models import Post
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("¡Bienvenido al blog")
+    posts = Post.objects.all().order_by('-fecha_publicacion')
+    return render(request, 'blog/index.html', {'posts': posts})
+
 
