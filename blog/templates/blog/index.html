@@ -9,7 +9,7 @@
     <ul>
         {% for post in posts %}
             <li>
-                <h2>{{ post.titulo }}</h2>
+                <h2><a href="{% url 'blog:post_detail' post.id %}">{{ post.titulo }}</a></h2>
                 <p>{{ post.contenido }}</p>
                 <p>Publicado por {{ post.author.name }} el {{ post.fecha_publicacion }}</p>
             </li>
