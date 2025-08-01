@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Mi Blog</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 20px; }
+        a {color: #007bff; text-decoration: none;}
+        a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
     <h1>Bienvenido a mi Blog</h1>
@@ -10,7 +18,7 @@
         {% for post in posts %}
             <li>
                 <h2><a href="{% url 'blog:post_detail' post.id %}">{{ post.titulo }}</a></h2>
-                <p>{{ post.contenido }}</p>
+                <p>{{ post.contenido|truncatewords:30 }}</p>
                 <p>Publicado por {{ post.author.name }} el {{ post.fecha_publicacion }}</p>
             </li>
         {% empty %}
